@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+target/
+*.tsbuildinfo
+
+# Test output
+coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Maven wrapper binary (downloaded on first ./mvnw run)
+.mvn/wrapper/maven-wrapper.jar
+
+# IDEs and editors
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
