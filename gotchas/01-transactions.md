@@ -1,9 +1,9 @@
-# 1. Transactions: no `@Transactional`
+# 1. Transactions: no built-in `@Transactional`
 
 **Spring:** put `@Transactional` on a service method. Spring wraps the bean in an AOP proxy that
 opens a transaction and rolls it back if a `RuntimeException` escapes.
 
-**Nest:** there is no `@Transactional` and no general-purpose AOP. Interceptors wrap route
+**Nest:** there is no built-in `@Transactional` and no general-purpose AOP. Interceptors wrap
 handlers, not arbitrary service methods. With TypeORM, you run the queries inside a callback
 that commits when it resolves and rolls back when it throws.
 
@@ -50,8 +50,8 @@ async placeOrderInTransaction(productId: string) {
 - The transaction boundary moves out of an annotation and into the method body.
 - Inside the callback, writes must go through `manager`, the transaction-bound EntityManager.
   That's the object TypeORM hands you, not the repositories injected in the constructor.
-- I can't build my own `@Transactional` with an interceptor, because interceptors only wrap
-  route handlers.
+- An interceptor can wrap a handler in a transaction, but not an arbitrary service method.
+  Community packages add a `@Transactional`-style decorator.
 
 ## See it
 

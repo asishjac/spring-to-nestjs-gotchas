@@ -15,8 +15,8 @@ proves the behaviour. Run them side by side and compare what happens.
 
 | # | Gotcha | Spring Boot | NestJS |
 |---|--------|-------------|--------|
-| 1 | [Transactions](gotchas/01-transactions.md) | `@Transactional` on any bean method rolls back on failure | No `@Transactional` and no general AOP. Use a `dataSource.transaction()` callback |
-| 2 | [Modules](gotchas/02-modules.md) | Component scanning: any `@Service` can be injected anywhere | A provider is private to its module unless it's **exported** and the module is **imported** |
+| 1 | [Transactions](gotchas/01-transactions.md) | `@Transactional` on any bean method rolls back on failure | No built-in `@Transactional` and no general AOP. Use a `dataSource.transaction()` callback |
+| 2 | [Modules](gotchas/02-modules.md) | Component scanning: any `@Service` can be injected anywhere | A provider is private to its module unless it's **exported** and the module is **imported** (or the module is `@Global()`) |
 | 3 | [Request scope](gotchas/03-request-scope.md) | A request-scoped bean reaches singletons through a proxy | The consumer becomes request-scoped too, all the way up to the controller |
 | 4 | [Validation](gotchas/04-validation.md) | Java types exist at runtime, and `@Valid` runs Bean Validation | TS types are erased, so without `ValidationPipe` the body is unchecked |
 

@@ -57,6 +57,9 @@ Removing `PaymentModule` from `imports` fails the same way.
   Spring's `@Import` merges configuration, while Nest's `imports` only brings in what the other
   module exports.
 - The good news is that the error comes at startup and names the missing dependency and the module.
+- The exception is a module marked [`@Global()`](https://docs.nestjs.com/modules#global-modules).
+  Its exported providers can be injected anywhere without importing the module. It still has to
+  be registered once, usually in the root module, and still has to list them in `exports`.
 
 ## See it
 
